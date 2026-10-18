@@ -4862,6 +4862,24 @@ void DOSBOX_SetupConfigSections(void) {
     Pbool->Set_help("If set, a line feed that is not already preceded by a carriage return is sent as CR LF,\n"
                     "so that output lines up in a terminal. Turn this off to get the guest's bytes unmodified.");
 
+    secprop=control->AddSection_prop("memmonserver",&Null_Init,true);
+    Pbool = secprop->Add_bool("memmonserver", Property::Changeable::OnlyAtStart, false);
+    Pbool->Set_help("Enable the memory monitor server. It is a small line-command console, reachable with an\n"
+                    "ordinary telnet client on the TCP port below, for inspecting and modifying the emulated\n"
+                    "machine's memory and CPU registers (hex dump, byte/word/dword read and write, fill,\n"
+                    "search, and register display/edit). Type 'help' after connecting for the command list.\n"
+                    "There is no authentication, so only open this up on a network you trust.");
+    Pbool->SetBasic(true);
+
+    Pint = secprop->Add_int("port", Property::Changeable::OnlyAtStart, 2161);
+    Pint->Set_help("TCP port the memory monitor server listens on.");
+    Pint->SetBasic(true);
+
+    Pstring = secprop->Add_string("bindaddress", Property::Changeable::OnlyAtStart, "127.0.0.1");
+    Pstring->Set_help("Address the memory monitor server binds to. The default only accepts connections from\n"
+                      "this machine; use 'any' to accept connections from the network.");
+    Pstring->SetBasic(true);
+
     secprop=control->AddSection_prop("ipx",&Null_Init,true);
     Pbool = secprop->Add_bool("ipx",Property::Changeable::WhenIdle, false);
     Pbool->Set_help("Enable ipx over UDP/IP emulation.");

@@ -1538,6 +1538,7 @@ for /d %%i in ("$(SolutionDir)\..\contrib\translations\*") do copy "%%i\*.lng" "
     <ClCompile Include="..\src\libs\passthroughio\passthroughio.cpp" />
     <ClCompile Include="..\src\misc\clipboard.cpp" />
     <ClCompile Include="..\src\misc\ttyserver.cpp" />
+    <ClCompile Include="..\src\misc\memmonserver.cpp" />
     <ClCompile Include="..\src\misc\cross.cpp" />
     <ClCompile Include="..\src\misc\ethernet.cpp" />
     <ClCompile Include="..\src\misc\messages.cpp" />
