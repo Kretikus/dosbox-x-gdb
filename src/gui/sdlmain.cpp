@@ -7309,6 +7309,7 @@ void DRIVES_Init();
 void IPX_Init();
 void IDE_Init();
 void NE2K_Init();
+void TTYSERVER_Init();
 void FDC_Primary_Init();
 void AUTOEXEC_Init();
 void DOS_InitClock();
@@ -8987,6 +8988,7 @@ int main(int argc, char* argv[]) SDL_MAIN_NOEXCEPT {
 #endif
         PARALLEL_Init();
         NE2K_Init();
+        TTYSERVER_Init();
 
 #if DOSBOXMENU_TYPE == DOSBOXMENU_HMENU
         Reflect_Menu();
